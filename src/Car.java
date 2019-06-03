@@ -22,18 +22,19 @@ public class Car extends Vehicle {
         return super.printInfo() + airCondiOffOn + "\t";
     }
 
+    @Override
+    public double range() {
+        if (airCondiOffOn) {
+            return (getFuelCap() / (getFuelConsumption() + 0.8)) * 100;
+        }
+        return super.range();
+    }
+
+    /*
     public void airCondiOn () {
         airCondiOffOn = true;
         setFuelConsumption(getFuelConsumption() + 0.8);
         }
-/*
-    @Override
-    public double range() {
-        if (airCondiOffOn == true) {
-            setFuelConsumption(getFuelConsumption() + 0.8);
-        }
-        return super.range();
-    }
 */
 }
 

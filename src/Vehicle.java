@@ -36,11 +36,19 @@ public class Vehicle {
         this.fuelConsumption = fuelConsumption;
     }
 
-    public String printInfo(){
-        return name + "\t" +fuelCap + "\t" + fuelConsumption + "\t";
+    public String printInfo() {
+        return name + "\t" + fuelCap + "\t" + fuelConsumption + "\t";
     }
 
-    public double range (){
-    return fuelCap/fuelConsumption *100;
+    public double range() {
+        return fuelCap / fuelConsumption * 100;
+    }
+
+    static public void showWholeInfo(Vehicle[] array) {
+        for (Vehicle vehicle : array) {
+            System.out.print(vehicle.printInfo());
+            System.out.println(vehicle.range());
+        }
+        System.out.println();
     }
 }

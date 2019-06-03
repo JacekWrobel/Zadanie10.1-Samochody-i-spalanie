@@ -23,7 +23,31 @@ public class Truck extends Car {
         return super.printInfo() + loadWeight + "\t";
     }
 
-    public void loadTruck(double kg) {
+    @Override
+    public double range() {
+        double addConsumption = 0;
+        if (airCondiOffOn) {
+            addConsumption += 1.6;
+        }
+        if (loadWeight > 0) {
+            addConsumption += loadWeight / 100 * 0.5;
+        }
+        return getFuelCap() / (getFuelConsumption() + addConsumption) * 100;
+    }
+
+    /*
+    @Override
+    public double range() {
+        if (airCondiOffOn) {
+            return (getFuelCap() / (getFuelConsumption()+1.6)) * 100;
+        }else return super.range();
+        if (loadWeight>0){
+            return (getFuelCap()loadWeight/100*0.5));
+        }
+        return super.range();
+    }
+
+        public void loadTruck(double kg) {
         loadWeight += kg;
         setFuelConsumption(getFuelConsumption() + ((kg / 100) * 0.5));
     }
@@ -32,17 +56,6 @@ public class Truck extends Car {
     public void airCondiOn() {
         airCondiOffOn = true;
         setFuelConsumption(getFuelConsumption() + 1.6);
-    }
-/*
-    @Override
-    public double range() {
-        if (airCondiOffOn == true) {
-            setFuelConsumption(getFuelConsumption()+0.8);
-        }
-        if (loadWeight>0){
-            setFuelConsumption(getFuelConsumption()+(loadWeight/100*0.5));
-        }
-        return super.range();
     }
 */
 }
